@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 import { Socket } from 'react-socket-io';
 
-const uri = 'http://localhost:3000';
+const uri = 'http://localhost:5000';
 const options = { transports: ['websocket'] };
 
 ReactDOM.render(

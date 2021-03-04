@@ -1,7 +1,11 @@
 const sanityClient = require('@sanity/client');
 const app = require('express')();
 const http = require('http').createServer(app);
-const io = require('socket.io')(http);
+const io = require('socket.io')(http, {
+  cors: {
+    origin: "*",
+  },
+});
 
 const port = process.env.PORT || 5000;
 
@@ -38,6 +42,6 @@ const subscription = client.listen(query, params)
     
   })
 
-http.listen(3000, () => {
+http.listen(port, () => {
   console.log(`API running on port : ${port}`);
 });

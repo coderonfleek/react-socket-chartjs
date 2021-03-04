@@ -1,4 +1,4 @@
-
+// Switching to SocketIo client
 import './App.css';
 
 import { Event } from 'react-socket-io';

@@ -24,6 +24,11 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
     console.log('a user connected');
+
+    client.fetch(query, params).then(records => {
+      console.log(records);
+      io.emit('newData', records);
+    })
 });
 
 //Listen for data changes in Sanity

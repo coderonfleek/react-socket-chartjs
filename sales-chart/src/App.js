@@ -1,9 +1,17 @@
-// Switching to SocketIo client
+import {useEffect, useState} from "react"
 import './App.css';
+import useSocket from "./useSocket";
 
-import { Event } from 'react-socket-io';
 
 function App() {
+
+  const { salesRecords } = useSocket("salesrecords");
+
+  const [records, setSalesRecords] = useState([]);
+
+  useEffect(() => {
+    setSalesRecords(salesRecords);
+  }, [salesRecords])
 
   const updateChartData = (data) =>{
     console.log('Something');
@@ -14,8 +22,9 @@ function App() {
   return (
     <div className="App">
       <h1>Sales Realtime Charts</h1>
-
-      <Event event='newData' handler={updateChartData} />
+      {
+        records.map((record)=> <p>{record.month} : {record.totalsales}</p>)
+      }
     </div>
   );
 }

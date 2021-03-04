@@ -4,16 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { Socket } from 'react-socket-io';
 
-const uri = 'http://localhost:5000';
-const options = { transports: ['websocket'] };
 
 ReactDOM.render(
   <React.StrictMode>
-    <Socket uri={uri} options={options}> 
       <App />
-    </Socket>
   </React.StrictMode>,
   document.getElementById('root')
 );

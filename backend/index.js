@@ -18,18 +18,20 @@ const client = sanityClient({
   useCdn: false // `false` if you want to ensure fresh data
 })
 
+io.on('connection', (socket) => {
+  console.log('a user connected');
+
+  client.fetch(query, params).then(records => {
+    console.log(records);
+    io.emit('newData', records);
+  })
+});
+
 app.get('/', (req, res) => {
   res.send('Welcome the Sales Records API');
 });
 
-io.on('connection', (socket) => {
-    console.log('a user connected');
 
-    client.fetch(query, params).then(records => {
-      console.log(records);
-      io.emit('newData', records);
-    })
-});
 
 //Listen for data changes in Sanity
 const query = '*[_type == "salesrecords"]';

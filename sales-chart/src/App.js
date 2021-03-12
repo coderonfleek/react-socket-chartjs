@@ -1,12 +1,12 @@
 import {useEffect, useState} from "react"
 import './App.css';
-import useSocket from "./useSocket";
+import useSanityListener from "./useSanityListener";
 import { Bar } from 'react-chartjs-2';
 
 
 function App() {
 
-  const { salesRecords } = useSocket("salesrecords");
+  const { salesRecords } = useSanityListener("z9l7ba4w");
 
   const [records, setSalesRecords] = useState([]);
   const [chartData, setChartData] = useState({});
@@ -55,11 +55,6 @@ function App() {
 
     
   }, [salesRecords])
-
-  const updateChartData = (data) =>{
-    console.log('Something');
-    console.log(data)
-  }
 
 
   return (
